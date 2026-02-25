@@ -156,7 +156,40 @@ document.getElementById("formulario").addEventListener("submit", function(e) {
     const tipo = document.getElementById("tipo").value;
     const ciudad = document.getElementById("ciudad").value.trim();
 
-    fetch("https://script.google.com/macros/s/AKfycbxDzioso8jHW8IuTDwxtaXM9Esam52-wGOfWmy39SPhaOjS0VmdSc4YNWo1q7XipQPa/exec", {
+    let valid = true;
+
+    if (empresa !== "") return;
+
+    if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,}$/.test(nombre)) {
+        showError(form.nombre, "Ingresa un nombre válido (mínimo 3 letras)");
+        valid = false;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        showError(form.email, "Correo electrónico inválido");
+        valid = false;
+    }
+
+    if (!/^[0-9]{7,15}$/.test(telefono)) {
+        showError(form.telefono, "Teléfono inválido (7 a 15 dígitos)");
+        valid = false;
+    }
+
+    if (tipo === "") {
+        showError(form.tipo, "Selecciona una opción");
+        valid = false;
+    }
+
+    if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,}$/.test(ciudad)) {
+        showError(form.ciudad, "Ciudad inválida");
+        valid = false;
+    }
+
+    if (!valid) return;
+
+    toggleLoading(true);
+
+    fetch("https://script.google.com/macros/s/AKfycbyvO-gCcwk3CIMs621VkU8YA5JiNE3B9fVnpiRZV_LIHAPImO-s_BJhx56W4VhtUhkp/exec", {
         method: "POST",
         body: new URLSearchParams({
             nombre: nombre,
