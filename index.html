@@ -37,9 +37,9 @@
         <form id="formulario" class="formulario" novalidate>
 
              <select name="tipo" id="tipo">
-                <option value="">¿Cómo quieres participar?</option>
-                <option value="Paciente/Familiar">Soy paciente o familiar</option>
+                <option value="">¿Cómo vas a participar?</option>
                 <option value="Cuidador">Soy cuidador</option>
+                <option value="Paciente/Familiar">Soy paciente o familiar</option>
             </select>
             <small class="error"></small>
 
@@ -147,7 +147,7 @@ form.addEventListener("submit", async function(e) {
     toggleLoading(false);
 });*/
 
-document.getElementById("formulario").addEventListener("submit", function(e) {
+    document.getElementById("formulario").addEventListener("submit", function(e) {
     e.preventDefault();
 
     const nombre = document.getElementById("nombre").value.trim();
@@ -228,7 +228,8 @@ function sanitize(str) {
 }
 
 function toggleLoading(state) {
-    const btn = document.getElementById("formulario").querySelector("button");
+    const formulario = document.getElementById("formulario");
+    const btn = formulario.querySelector("button");
     const text = btn.querySelector(".btn-text");
     const loader = btn.querySelector(".loader");
 
