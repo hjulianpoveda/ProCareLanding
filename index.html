@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>ProCare | Próximamente</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Muy pronto una nueva forma de cuidar.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section class="hero">
+    <div class="container">
+        <img src="img/logo-procare.png" alt="ProCare Logo" class="logo">
+        <h1>Una nueva forma de cuidar está por llegar</h1>
+        <p class="subtitle">
+            Conectando pacientes y cuidadores con confianza, tecnología y humanidad.
+        </p>
+        <a href="#registro" class="btn-primary">Quiero saber más</a>
+    </div>
+</section>
+
+<section class="expectativa">
+    <div class="container">
+        <h2>Estamos construyendo algo especial</h2>
+        <p>
+            Muy pronto lanzaremos una plataforma diseñada para transformar el cuidado en casa.
+            Déjanos tus datos y sé de los primeros en conocerlo.
+        </p>
+    </div>
+</section>
+
+<section id="registro" class="registro">
+    <div class="container">
+        <h2>Regístrate para recibir información</h2>
+
+        <form id="formulario" class="formulario" novalidate>
+
+             <select name="tipo" id="tipo">
+                <option value="">¿Cómo quieres participar?</option>
+                <option value="Paciente/Familiar">Soy paciente o familiar</option>
+                <option value="Cuidador">Soy cuidador</option>
+            </select>
+            <small class="error"></small>
+
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre completo">
+            <small class="error"></small>
+
+            <input type="email" name="email" id="email" placeholder="Correo electrónico">
+            <small class="error"></small>
+
+            <input type="tel" name="telefono" id="telefono" placeholder="Teléfono">
+            <small class="error"></small>
+
+            <input type="text" name="ciudad" id="ciudad" placeholder="Ciudad">
+            <small class="error"></small>
+
+            <!--<input type="text" name="empresa" style="display:none"> -->
+
+            <button type="submit" class="btn-primary">
+                <span class="btn-text">Recibir información</span>
+                <span class="loader" style="display:none;"></span>
+            </button>
+
+        </form>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 ProCare. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+/*const form = document.getElementById("formulario");
+const endpoint = "https://script.google.com/macros/s/AKfycbxN9KC8rtB0VzeNFoBQmmy6SE7Q3tdY0G_TBpNkWxpuJ4L7PXd9MApH_5jilCGIFSnM/exec";
+
+form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+    clearErrors();
+
+    const nombre = sanitize(form.nombre.value.trim());
+    const email = sanitize(form.email.value.trim());
+    const telefono = sanitize(form.telefono.value.trim());
+    const tipo = form.tipo.value;
+    const ciudad = sanitize(form.ciudad.value.trim());
+    const empresa = form.empresa.value;
+
+    let valid = true;
+
+    if (empresa !== "") return;
+
+    if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,}$/.test(nombre)) {
+        showError(form.nombre, "Ingresa un nombre válido (mínimo 3 letras)");
+        valid = false;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        showError(form.email, "Correo electrónico inválido");
+        valid = false;
+    }
+
+    if (!/^[0-9]{7,15}$/.test(telefono)) {
+        showError(form.telefono, "Teléfono inválido (7 a 15 dígitos)");
+        valid = false;
+    }
+
+    if (tipo === "") {
+        showError(form.tipo, "Selecciona una opción");
+        valid = false;
+    }
+
+    if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,}$/.test(ciudad)) {
+        showError(form.ciudad, "Ciudad inválida");
+        valid = false;
+    }
+
+    if (!valid) return;
+
+    toggleLoading(true);
+
+    try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 8000);
+
+        const response = await fetch(endpoint, {
+            method: "POST",
+            body: JSON.stringify({ nombre, email, telefono, tipo, ciudad }),
+            headers: { "Content-Type": "application/json" },
+            signal: controller.signal
+        });
+
+        clearTimeout(timeout);
+
+        const result = await response.json();
+
+        if (result.status === "success") {
+            alert("Gracias por registrarte. Te contactaremos pronto.");
+            form.reset();
+        } else {
+            alert("Error al guardar datos.");
+        }
+
+    } catch (error) {
+        alert("Error de conexión. Intenta nuevamente.");
+    }
+
+    toggleLoading(false);
+});*/
+
+document.getElementById("formulario").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const telefono = document.getElementById("telefono").value.trim();
+    const tipo = document.getElementById("tipo").value;
+
+    fetch("https://script.google.com/macros/s/AKfycbxN9KC8rtB0VzeNFoBQmmy6SE7Q3tdY0G_TBpNkWxpuJ4L7PXd9MApH_5jilCGIFSnM/exec", {
+        method: "POST",
+        body: new URLSearchParams({
+            nombre: nombre,
+            email: email,
+            telefono: telefono,
+            tipo: tipo
+        })
+    })
+    .then(response => response.text())
+    .then(data => {
+        if (data === "success") {
+            alert("Registro exitoso");
+            document.getElementById("formulario").reset();
+        } else {
+            alert("Ocurrió un error.");
+        }
+    })
+    .catch(error => {
+        alert("Error de conexión. Intenta nuevamente.");
+    });
+});
+
+function showError(input, message) {
+    input.classList.add("error-input");
+    input.nextElementSibling.textContent = message;
+}
+
+function clearErrors() {
+    document.querySelectorAll(".error").forEach(e => e.textContent = "");
+    document.querySelectorAll("input, select").forEach(i => i.classList.remove("error-input"));
+}
+
+function sanitize(str) {
+    return str.replace(/[<>]/g, "");
+}
+
+function toggleLoading(state) {
+    const btn = form.querySelector("button");
+    const text = btn.querySelector(".btn-text");
+    const loader = btn.querySelector(".loader");
+
+    btn.disabled = state;
+    text.style.display = state ? "none" : "inline";
+    loader.style.display = state ? "inline-block" : "none";
+}
+</script>
+
+</body>
+</html>
