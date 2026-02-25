@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.6;
+    background: #ffffff;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+}
+
+.hero {
+    background: linear-gradient(135deg, #1f4fa3, #2bc0c8);
+    color: white;
+    padding: 100px 20px;
+}
+
+.logo {
+    width: 180px;
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    opacity: 0.95;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 15px 35px;
+    background: white;
+    color: #1f4fa3;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: #f0f0f0;
+}
+
+.expectativa {
+    padding: 80px 20px;
+    background: #f7f9fc;
+}
+
+.expectativa h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.expectativa p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 1rem;
+}
+
+.registro {
+    padding: 80px 20px;
+}
+
+.registro h2 {
+    margin-bottom: 40px;
+    font-size: 1.8rem;
+}
+
+.formulario {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.formulario input,
+.formulario select {
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.error {
+    color: #d93025;
+    font-size: 0.85rem;
+    text-align: left;
+    height: 14px;
+}
+
+input.error-input,
+select.error-input {
+    border: 1px solid #d93025;
+}
+
+.loader {
+    width: 16px;
+    height: 16px;
+    border: 2px solid white;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    display: inline-block;
+    animation: spin 0.7s linear infinite;
+    margin-left: 8px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+footer {
+    padding: 30px 20px;
+    background: #1f4fa3;
+    color: white;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .logo {
+        width: 140px;
+    }
+}
