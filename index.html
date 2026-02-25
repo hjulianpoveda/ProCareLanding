@@ -154,6 +154,7 @@ document.getElementById("formulario").addEventListener("submit", function(e) {
     const email = document.getElementById("email").value.trim();
     const telefono = document.getElementById("telefono").value.trim();
     const tipo = document.getElementById("tipo").value;
+    const ciudad = document.getElementById("ciudad").value.trim();
 
     fetch("https://script.google.com/macros/s/AKfycbxDzioso8jHW8IuTDwxtaXM9Esam52-wGOfWmy39SPhaOjS0VmdSc4YNWo1q7XipQPa/exec", {
         method: "POST",
@@ -161,7 +162,8 @@ document.getElementById("formulario").addEventListener("submit", function(e) {
             nombre: nombre,
             email: email,
             telefono: telefono,
-            tipo: tipo
+            tipo: tipo,
+            ciudad: ciudad
         })
     })
     .then(response => response.text())
@@ -174,7 +176,7 @@ document.getElementById("formulario").addEventListener("submit", function(e) {
         }
     })
     .catch(error => {
-        alert("Error de conexión. Intenta nuevamente.");
+        //alert("Error de conexión. Intenta nuevamente.");
     });
 });
 
