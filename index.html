@@ -186,7 +186,7 @@ form.addEventListener("submit", async function(e) {
     document.getElementById("departamento").addEventListener("change", function () {
       const municipioSelect = document.getElementById("ciudad");
       municipioSelect.innerHTML = '<option value="">Municipio de residencia</option>';
-
+      municipioSelect.disabled = false;
       const filtrados = dataGlobal.filter(d => d.departamento === this.value);
 
       filtrados.forEach(m => {
