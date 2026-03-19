@@ -36,7 +36,7 @@
     <div class="container">
         <h2>Regístrate para participar</h2>
 
-         <form id="formulario" class="formulario" novalidate>
+        <form id="formulario" class="formulario" novalidate>
             <select name="especialidad" id="especialidad">
                 <option value="">¿Como deseas participar?</option>
                 <option value="Auxiliar de enfermería">Soy Auxiliar de enfermería</option>
@@ -178,27 +178,32 @@ form.addEventListener("submit", async function(e) {
     //if (empresa !== "") return;
 
     if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,}$/.test(nombre)) {
-        showError(form.nombre, "Ingresa un nombre válido (mínimo 3 letras)");
+        showError(form.nombre, "Ingresa un nombre válido (Nombre y Apellido)");
         valid = false;
     }
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+    /*if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
         showError(form.email, "Correo electrónico inválido");
         valid = false;
-    }
+    }*/
 
     if (!/^[0-9]{7,15}$/.test(telefono)) {
-        showError(form.telefono, "Teléfono inválido (7 a 15 dígitos)");
+        showError(form.telefono, "Teléfono movil inválido");
         valid = false;
     }
 
-    if (tipo === "") {
+    if (especialidad === "") {
         showError(form.tipo, "Selecciona una opción");
         valid = false;
     }
 
+    if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,}$/.test(departamento)) {
+        showError(form.ciudad, "Selecciona una departamento");
+        valid = false;
+    }
+
     if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,}$/.test(ciudad)) {
-        showError(form.ciudad, "Ciudad inválida");
+        showError(form.ciudad, "Selecciona una ciudad o municipio");
         valid = false;
     }
 
