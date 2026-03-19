@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: #1a1a1a;
@@ -175,4 +179,41 @@ footer {
   float: right;
   font-size: 24px;
   cursor: pointer;
+}
+
+.exito {
+  text-align: center;
+  padding: 30px;
+}
+
+.logo-modal {
+  width: 120px;
+  margin-bottom: 15px;
+}
+
+.exito h2 {
+  margin-bottom: 10px;
+}
+
+.exito p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Botón estilo moderno */
+#btnAceptar {
+  background-color: #007BFF; /* cámbialo por tu color */
+  margin-top: 3em;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+#btnAceptar:hover {
+  background-color: #0056b3;
 }
